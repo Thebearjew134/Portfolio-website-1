@@ -6,7 +6,7 @@ import emailjs from '@emailjs/browser'
 
 const Contact = () => {
     const [letterClass, setLetterClass] = useState('text-animate')
-    const refForm = useRef
+    const refForm = useRef()
 
     useEffect(() => {
       return setTimeout(() => {
@@ -18,11 +18,21 @@ const Contact = () => {
         e.preventDefault()
 
         emailjs
-            .sendForm
+            .sendForm(
                 'gmail',
                 'template_c6gazqu',
-                refForm.current, 
-                'user_pewgO0wuBZnXyz1C8koDV'
+                refForm.current,
+                '3lp5JZwq81QwvPqw9'
+            )
+            .then(
+                () => {
+                    alert('Message successfully sent!')
+                    window.location.reload(false)
+                },
+                () => {
+                    alert('Failed to send message, please try again')
+                }
+            )
     }
 
     return (
